@@ -26,7 +26,7 @@ public class 클래스명 {
 
 ## 변수
 ### 화면에 글자 출력
-``` Java 
+``` java 
 System.out.print("hello, world") // 화면에 글자 출력
 System.out.printIn() // 괄호 안의 내용을 출력하고 줄바꿈도 해줌
 ```
@@ -34,13 +34,13 @@ System.out.printIn() // 괄호 안의 내용을 출력하고 줄바꿈도 해줌
 ### 변수 할당
 기본적으로 변수 선언은 아래와 같다  
 변수타입 변수이름;
-``` Java
+``` java
 int x; // 정수(integer)를 저장하기 위한 변수 선언
 ```
 
 ### 변수의 자료형
 - 숫자
-    ``` Java
+    ``` java
     // 정수를 저장하기 위한 타입
     int 
     long // 20억이 넘는 정수일때 사용
@@ -49,12 +49,12 @@ int x; // 정수(integer)를 저장하기 위한 변수 선언
     double // 15자리
     ```
 - 문자
-    ``` Java
+    ``` java
     char // 문자(character)를 저장하기 위한 타입
     String // 여러 문자를 저장하기 위한 타입
     ```
 - 예시
-    ``` Java
+    ``` java
     int x = 100; // 정수 저장
     double pi = 3.14; // 실수 저장
     char ch = 'a'; // 문자(1개)
@@ -69,9 +69,88 @@ MAX_VALUE = 100; // 상수에 초기 값 저장
 MAX_VALUE = 200; // ERROR 저장된 값 변경 불가
 ```
 
+## 접근제어자
+### public
+public 접근 제어자가 붙은 변수나 메서드는 어떤 클래스에서도 접근이 가능하다.
+``` java
+package house;
+
+public class HousePark {
+    protected String lastname = "park";
+    public String info = "this is public message.";
+}
+```
+
+``` java
+import house.HousePark;
+
+public class Sample {
+    public static void main(String[] args) {
+        HousePark housePark = new HousePark(); 
+        System.out.println(housePark.info); // 위에서 public 접근제어자를 사용하였기에 다른 클래스에서도 접근이 가능함.
+    }
+}
+```
+
+### private
+접근 제어자가 private으로 설정되었다면 private이 붙은 변수나 메서드는 해당 클래스 안에서만 접근이 가능하다.
+``` java
+public class Sample {
+    private String secret; // private로 접근제어자를 사용하였기에 Sample 내에서만 사용가능
+    private String getSecret() {
+        return this.secret;
+    }
+}
+```
+
+### protected
+접근 제어자가 protected로 설정되었다면 protected가 붙은 변수나 메서드는 동일 패키지의 클래스 또는 해당 클래스를 상속받은 클래스에서만 접근이 가능하다.
+``` java
+package house;  // 패키지가 서로 다르다.
+
+public class HousePark {
+    protected String lastname = "park";
+}
+```
+
+``` java
+package house.person;  // 패키지가 서로 다르다.
+
+import house.HousePark;
+
+public class EungYongPark extends HousePark {  // HousePark을 상속했다.
+    public static void main(String[] args) {
+        EungYongPark eyp = new EungYongPark();
+        System.out.println(eyp.lastname);  // 상속한 클래스의 protected 변수는 접근이 가능하다.
+    }
+}
+```
+
+### default
+접근 제어자를 별도로 설정하지 않는다면 변수나 메서드는 default 접근 제어자가 자동으로 설정되어 동일한 패키지 안에서만 접근이 가능하다.
+``` java
+package house;  // 패키지가 동일하다.
+
+public class HouseKim {
+    String lastname = "kim";  // lastname은 default 접근제어자로 설정된다.
+}
+```
+
+``` java
+package house;  // 패키지가 동일하다.
+
+public class HousePark {
+    String lastname = "park";
+
+    public static void main(String[] args) {
+        HouseKim kim = new HouseKim();
+        System.out.println(kim.lastname);  // HouseKim 클래스의 lastname 변수를 사용할 수 있다.
+    }
+}
+```
 
 ## import
-``` Java
+``` java
 // import 패키지명.클래스명;
 import java.utils.Date; 
 // static import 패키지명
