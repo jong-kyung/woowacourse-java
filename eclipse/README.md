@@ -1,6 +1,5 @@
-## 이클립스에서 프로젝트 불러오기
-1. 프로젝트 파일이 생성되어 있는 경우  
-file - import - general - Existing Project into workspace
-2. 프로젝트파일이 따로 존재하지 않는 경우  
-file - import - 프로젝트 유형 - Existing 프로젝트유형  
-ex) file - import - gradle - EXisting gradle project
+# eclipse
+프리코스를 진행하며 새로운 IDE인 eclipse를 사용하며 겪은 어려움을 해결하는 방법을 작성합니다.
+
+## 작성 내용
+이클립스를 사용하며 어려웠던 점을 작성하고 그 해결 방법을 작성합니다.
